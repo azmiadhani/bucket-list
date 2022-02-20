@@ -1,2 +1,16 @@
-GET http://localhost:{{$dotenv PORT}}/api/bucket-list
+# change "REST_CLIENT_HOSTNAME" & @port "PORT" in .env file
+@host = {{$dotenv REST_CLIENT_HOSTNAME}}:{{$dotenv PORT}}
+
+###
+# /api/bucket-list 
+# Description: bucket list api
+### 
+GET {{host}}/api/bucket-list
+###
+POST {{host}}/api/bucket-list
+###
+PUT {{host}}/api/bucket-list/1
+###
+DELETE {{host}}/api/bucket-list/1
+###
 
