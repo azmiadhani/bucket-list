@@ -2,15 +2,26 @@
 @host = {{$dotenv REST_CLIENT_HOSTNAME}}:{{$dotenv PORT}}
 
 ###
-# /api/bucket-list 
-# Description: bucket list api
+# @desc     >bucketlist API
+# @route    /api/bucket-list
 ### 
-GET {{host}}/api/bucket-list
+GET {{host}}/api/bucketlist
 ###
-POST {{host}}/api/bucket-list
+POST {{host}}/api/bucketlist
+content-type: application/json
+
+{
+    "name": "Go to America"
+}
 ###
-PUT {{host}}/api/bucket-list/1
+PUT {{host}}/api/bucketlist/1
+content-type: application/json
+
+{
+    "name": "Go to America",
+    "isDone": false
+}
 ###
-DELETE {{host}}/api/bucket-list/1
+DELETE {{host}}/api/bucketlist/1
 ###
 
