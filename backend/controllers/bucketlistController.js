@@ -9,6 +9,10 @@ module.exports.get = (req, res) => {
 // @route   GET /api/bucketlist
 // @access  Public
 module.exports.post = (req, res) => {
+  if (!req.body.name || !req.body.isDone) {
+    res.status(400);
+    throw new Error('Please provide name');
+  }
   res.status(200).json({ message: 'POST', body: req.body });
 };
 
