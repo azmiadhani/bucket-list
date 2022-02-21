@@ -1,7 +1,12 @@
 const express = require('express');
+const colors = require('colors');
 const dotenv = require('dotenv').config();
 const routes = require('./routes/indexRoutes');
 const { errorHandler } = require('./middleware/errorMiddleware');
+
+// initiate MongoDB Connection
+const connectDB = require('./config/db');
+connectDB();
 
 const app = express();
 
