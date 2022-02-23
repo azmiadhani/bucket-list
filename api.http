@@ -14,7 +14,7 @@ content-type: application/json
     "name": "Go to America"
 }
 ###
-PUT {{host}}/api/bucketlist/6215cb6a5bd6964049453808
+PUT {{host}}/api/bucketlist/6215dc6e2b4a816f779fe435
 content-type: application/json
 
 {
