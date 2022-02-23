@@ -48,7 +48,7 @@ module.exports.put = asyncHandler(async (req, res) => {
     throw new Error('Bucketlist not found');
   }
 
-  res.status(200).json(updatedBucketlist);
+  res.status(201).json(updatedBucketlist);
 });
 
 // @desc    Delete >bucketlist
