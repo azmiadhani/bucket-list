@@ -14,14 +14,14 @@ content-type: application/json
     "name": "Go to America"
 }
 ###
-PUT {{host}}/api/bucketlist/1
+PUT {{host}}/api/bucketlist/6215cb6a5bd6964049453808
 content-type: application/json
 
 {
-    "name": "Go to America",
-    "isDone": false
+    "name": "NYE",
+    "isDone": true
 }
 ###
-DELETE {{host}}/api/bucketlist/1
+DELETE {{host}}/api/bucketlist/6215c92d082de1ebd7fab944
 ###
 

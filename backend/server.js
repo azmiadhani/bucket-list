@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(routes);
 
+// asyncHandler gonna use errorHandler middleware that we made if there's an error thrown
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
