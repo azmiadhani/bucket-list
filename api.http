@@ -1,12 +1,20 @@
+# This file act as an API Documentation
+# Request inside this file can be send using VSCode Extension by name "REST Client"
+# Regards, Muhammad Azmi Adhani
+
 # change "REST_CLIENT_HOSTNAME" & @port "PORT" in .env file
 @host = {{$dotenv REST_CLIENT_HOSTNAME}}:{{$dotenv PORT}}
-
 ###
-# @desc     >bucketlist API
+
+# @API      bucketlist
 # @route    /api/bucket-list
 ### 
+
+# @desc         Get all bucketlists
 GET {{host}}/api/bucketlist
 ###
+
+# @desc         Insert a new bucketlist
 POST {{host}}/api/bucketlist
 content-type: application/json
 
@@ -14,6 +22,8 @@ content-type: application/json
     "name": "Go to America"
 }
 ###
+
+# @desc         Update a bucketlist
 PUT {{host}}/api/bucketlist/6215dc6e2b4a816f779fe435
 content-type: application/json
 
@@ -22,6 +32,8 @@ content-type: application/json
     "isDone": true
 }
 ###
-DELETE {{host}}/api/bucketlist/6215c92d082de1ebd7fab944
+
+# @desc         Delete a bucketlist
+DELETE {{host}}/api/bucketlist/6215dc6e2b4a816f779fe437
 ###
 
