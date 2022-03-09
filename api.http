@@ -9,11 +9,9 @@
 # @API      bucketlist
 # @route    /api/bucket-list
 ### 
-
 # @desc         Get all bucketlists
 GET {{host}}/api/bucketlist
 ###
-
 # @desc         Insert a new bucketlist
 POST {{host}}/api/bucketlist
 content-type: application/json
@@ -22,7 +20,6 @@ content-type: application/json
     "name": "Go to America"
 }
 ###
-
 # @desc         Update a bucketlist
 PUT {{host}}/api/bucketlist/6215dc6e2b4a816f779fe435
 content-type: application/json
@@ -32,8 +29,28 @@ content-type: application/json
     "isDone": true
 }
 ###
-
 # @desc         Delete a bucketlist
 DELETE {{host}}/api/bucketlist/6215dc6e2b4a816f779fe437
 ###
 
+# @API      auth
+# @route    /api/auth
+### 
+# @desc         Sign Up for User
+POST {{host}}/api/auth/signup
+content-type: application/json
+
+{
+    "email": "azmiadhani@gmail.com",
+    "password": "azmiadhani"
+}
+###
+# @desc         Log In for User
+POST {{host}}/api/auth/login
+content-type: application/json
+
+{
+    "email": "azmiadhani@gmail.com",
+    "password": "azmiadhani"
+}
+###
