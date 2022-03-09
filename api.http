@@ -6,33 +6,6 @@
 @host = {{$dotenv REST_CLIENT_HOSTNAME}}:{{$dotenv PORT}}
 ###
 
-# @API      bucketlist
-# @route    /api/bucket-list
-### 
-# @desc         Get all bucketlists
-GET {{host}}/api/bucketlist
-###
-# @desc         Insert a new bucketlist
-POST {{host}}/api/bucketlist
-content-type: application/json
-
-{
-    "name": "Go to America"
-}
-###
-# @desc         Update a bucketlist
-PUT {{host}}/api/bucketlist/6215dc6e2b4a816f779fe435
-content-type: application/json
-
-{
-    "name": "NYE",
-    "isDone": true
-}
-###
-# @desc         Delete a bucketlist
-DELETE {{host}}/api/bucketlist/6215dc6e2b4a816f779fe437
-###
-
 # @API      auth
 # @route    /api/auth
 ### 
@@ -53,4 +26,33 @@ content-type: application/json
     "email": "azmiadhani@gmail.com",
     "password": "azmiadhani"
 }
+###
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4MDA3NTEsImV4cCI6MTY0NjgwMDc2NiwiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.2JG9gdnbhkHnmofuDUQ_0K_GJJrlvtkTnZGD9LUsHuQ
+
+# @API      bucketlist
+# @route    /api/bucket-list
+### 
+# @desc         Get all bucketlists
+GET {{host}}/api/bucketlist
+Authorization: Bearer {{accessToken}}
+###
+# @desc         Insert a new bucketlist
+POST {{host}}/api/bucketlist
+content-type: application/json
+
+{
+    "name": "Go to America"
+}
+###
+# @desc         Update a bucketlist
+PUT {{host}}/api/bucketlist/6215dc6e2b4a816f779fe435
+content-type: application/json
+
+{
+    "name": "NYE",
+    "isDone": true
+}
+###
+# @desc         Delete a bucketlist
+DELETE {{host}}/api/bucketlist/6215dc6e2b4a816f779fe437
 ###

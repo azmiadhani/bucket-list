@@ -4,7 +4,7 @@ const authRoutes = require('./authRoutes');
 
 const router = Router();
 
-router.use('/bucketlist', bucketListRoutes);
 router.use('/auth', authRoutes);
+router.use('/bucketlist', bucketListRoutes);
 
 module.exports = router;
