@@ -14,7 +14,7 @@ POST {{host}}/api/auth/signup
 content-type: application/json
 
 {
-    "email": "azmiadhani@gmail.com",
+    "email": "azmiadhani2@gmail.com",
     "password": "azmiadhani"
 }
 ###
@@ -27,7 +27,18 @@ content-type: application/json
     "password": "azmiadhani"
 }
 ###
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4MDA3NTEsImV4cCI6MTY0NjgwMDc2NiwiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.2JG9gdnbhkHnmofuDUQ_0K_GJJrlvtkTnZGD9LUsHuQ
+
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4MDk3NjgsImV4cCI6MTY0NjgwOTc5OCwiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9._ktbk1fxdcv1tHv85uT-A06b0g_dVEHd2Hy4HUBegPU
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4MDk3NjgsImV4cCI6MTY3ODM2NzM2OCwiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.ySG8C1XtgvknBEf2Z3_8qlX9wvu9ymThOfviFd1MX9c
+
+# @desc         Refresh Token
+POST {{host}}/api/auth/refresh-token
+content-type: application/json
+
+{
+    "refreshToken" : "{{refreshToken}}"
+}
+###
 
 # @API      bucketlist
 # @route    /api/bucket-list
