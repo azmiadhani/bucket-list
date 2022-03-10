@@ -53,12 +53,13 @@ Authorization: Bearer {{accessToken}}
 content-type: application/json
 
 {
-    "name": "Go to America",
+    "name": "Go to yeyeye",
     "isDone": true
 }
 ###
+@bucketlistId = 6229b442f7f23ba06098d183
 # @desc         Update a bucketlist
-PUT {{host}}/api/bucketlist/6229b2ed0446219a57cb80d5
+PUT {{host}}/api/bucketlist/{{bucketlistId}}
 Authorization: Bearer {{accessToken}}
 content-type: application/json
 
@@ -68,6 +69,6 @@ content-type: application/json
 }
 ###
 # @desc         Delete a bucketlist
-DELETE {{host}}/api/bucketlist/6229b2ed0446219a57cb80d5
+DELETE {{host}}/api/bucketlist/{{bucketlistId}}
 Authorization: Bearer {{accessToken}}
 ###
