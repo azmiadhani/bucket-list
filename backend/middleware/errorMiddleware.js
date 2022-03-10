@@ -2,7 +2,7 @@ const httpStatusCodes = require('../helpers/httpStatusCodesHelper.js');
 
 const handleUnauthorized = (err, res) => {
   let statusCode = httpStatusCodes.UNAUTHORIZED;
-  let message = 'Unauthorized Access';
+  let message = 'Unauthorized access, please provide Access Token.';
   if (err.name === 'TokenExpiredError')
     message = 'Authorization expired, please relogin';
   let errors = {};
@@ -60,7 +60,8 @@ const errorHandler = (err, req, res, next) => {
     if (
       err.name === 'JsonWebTokenError' ||
       err.name === 'NotBeforeError' ||
-      err.name === 'TokenExpiredError'
+      err.name === 'TokenExpiredError' ||
+      err.message === 'Unauthorized'
     )
       errorObject = handleUnauthorized(err, res);
     if (Object.keys(errorObject).length === 0) {

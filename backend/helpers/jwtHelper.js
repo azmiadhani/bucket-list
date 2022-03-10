@@ -16,7 +16,7 @@ module.exports.signAccessToken = async (userId) => {
 module.exports.verifyAccessToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   if (!authHeader) {
-    throw new Error('UNAUTHORIZED');
+    throw new Error('Unauthorized');
   }
   const bearerToken = authHeader.split(' ');
   const token = bearerToken[1];
