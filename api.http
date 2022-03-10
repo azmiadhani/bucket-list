@@ -28,8 +28,8 @@ content-type: application/json
 }
 ###
 
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4MDk3NjgsImV4cCI6MTY0NjgwOTc5OCwiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9._ktbk1fxdcv1tHv85uT-A06b0g_dVEHd2Hy4HUBegPU
-@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4MDk3NjgsImV4cCI6MTY3ODM2NzM2OCwiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.ySG8C1XtgvknBEf2Z3_8qlX9wvu9ymThOfviFd1MX9c
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4OTkzMjMsImV4cCI6MTY0NjkwMjkyMywiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.OzkY_mQzxwCG0wJQ5pbVhqCbDEONpbSwmnUSvYJE-pw
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4OTg2MjksImV4cCI6MTY3ODQ1NjIyOSwiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.TvLmPhN2sYuKLJvODE4qgTEus3MB_WZJIfCKb4pSBoA
 
 # @desc         Refresh Token
 POST {{host}}/api/auth/refresh-token
@@ -49,14 +49,17 @@ Authorization: Bearer {{accessToken}}
 ###
 # @desc         Insert a new bucketlist
 POST {{host}}/api/bucketlist
+Authorization: Bearer {{accessToken}}
 content-type: application/json
 
 {
-    "name": "Go to America"
+    "name": "Go to America",
+    "isDone": true
 }
 ###
 # @desc         Update a bucketlist
-PUT {{host}}/api/bucketlist/6215dc6e2b4a816f779fe435
+PUT {{host}}/api/bucketlist/6229b2ed0446219a57cb80d5
+Authorization: Bearer {{accessToken}}
 content-type: application/json
 
 {
@@ -65,5 +68,6 @@ content-type: application/json
 }
 ###
 # @desc         Delete a bucketlist
-DELETE {{host}}/api/bucketlist/6215dc6e2b4a816f779fe437
+DELETE {{host}}/api/bucketlist/6229b2ed0446219a57cb80d5
+Authorization: Bearer {{accessToken}}
 ###

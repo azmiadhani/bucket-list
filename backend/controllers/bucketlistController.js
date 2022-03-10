@@ -21,7 +21,8 @@ module.exports.post = asyncHandler(async (req, res) => {
   }
   // insert into db
   const bucketlist = await Bucketlist.create({
-    name: req.body.name,
+    ...req.body,
+    user: req.payload.aud,
   });
 
   res.status(201).json(bucketlist);
