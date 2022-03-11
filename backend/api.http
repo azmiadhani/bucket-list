@@ -28,7 +28,7 @@ content-type: application/json
 }
 ###
 
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4OTkzMjMsImV4cCI6MTY0NjkwMjkyMywiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.OzkY_mQzxwCG0wJQ5pbVhqCbDEONpbSwmnUSvYJE-pw
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY5NzExMTEsImV4cCI6MTY0Njk3NDcxMSwiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.vKAJV_gMokT3ENFyqvUlfFokTjbVPbcUHU_5Z9VhRdE
 @refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDY4OTg2MjksImV4cCI6MTY3ODQ1NjIyOSwiYXVkIjoiNjIyODIzZTJmNjQxNDQ1NTQ2NTMxMTQ4IiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.TvLmPhN2sYuKLJvODE4qgTEus3MB_WZJIfCKb4pSBoA
 
 # @desc         Refresh Token
@@ -57,7 +57,7 @@ content-type: application/json
     "isDone": true
 }
 ###
-@bucketlistId = 6229b442f7f23ba06098d183
+@bucketlistId = 622ac8f3a8fec7c7524b2e7f
 # @desc         Update a bucketlist
 PUT {{host}}/api/bucketlist/{{bucketlistId}}
 Authorization: Bearer {{accessToken}}
