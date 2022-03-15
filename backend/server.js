@@ -3,9 +3,10 @@ const colors = require('colors');
 const dotenv = require('dotenv').config();
 const routes = require('./routes/indexRoutes');
 const { errorHandler } = require('./middleware/errorMiddleware');
-
+const cors = require('cors');
 // initiate MongoDB Connection
 const connectDB = require('./config/db');
+
 connectDB();
 
 const app = express();
@@ -13,6 +14,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // middleware
+// enable cors
+app.use(cors());
 // takes jsondata from any request and converts it to javascript object
 // allow us to use req.body
 app.use(express.json());
