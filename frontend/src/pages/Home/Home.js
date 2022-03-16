@@ -3,11 +3,13 @@ import Bucketlist from '../../components/Bucketlist/Bucketlist';
 import axios from 'axios';
 
 const Home = () => {
-  const [bucketlist, setBucketlist] = useState([]);
+  const [bucketlist, setBucketlist] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const access_token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDczNTE1NDcsImV4cCI6MTY0NzM1NTE0NywiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.d4-HBCz7nboQaoim3VgGPrmPZpLfrBTDEq_Hke3JgTU';
-  // useEffect runs only once when the component first renders
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc0MDY3OTUsImV4cCI6MTY0NzQxMDM5NSwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.UuCDCmwCRUJj6FlnkdVHFfCfjicImPQQ-KnuBzY7-pU';
+  // get bucketlist data when component is mounted
   useEffect(() => {
+    clearAllState();
     axios({
       method: 'get',
       url: 'http://localhost:8001/api/bucketlist',
@@ -21,30 +23,28 @@ const Home = () => {
       })
       .catch((err) => {
         // handle error
-        console.log(err);
+        console.log(err.response.data.error.message);
+        setErrorMessage(err.response.data.error.message);
       })
       .then(() => {
         // always executed
       });
   }, []);
-  const reRenderTest = () => {
-    var originalBucketlist = [...bucketlist];
-    originalBucketlist.push({
-      _id: Math.random(),
-      name: 'test',
-      isDone: false,
-    });
-    setBucketlist(originalBucketlist);
+  // clear all state
+  const clearAllState = () => {
+    setBucketlist(null);
+    setErrorMessage(null);
   };
   return (
     <div className="chome">
-      <h2>Homepage</h2>
-      <button onClick={reRenderTest}>Test</button>
-      <Bucketlist
-        datas={bucketlist}
-        title="Bucketlist"
-        setDatas={setBucketlist}
-      />
+      {bucketlist && (
+        <Bucketlist
+          datas={bucketlist}
+          title="Bucketlist"
+          setDatas={setBucketlist}
+        />
+      )}
+      {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
 };
