@@ -6,7 +6,7 @@ const Home = () => {
   const [bucketlist, setBucketlist] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const access_token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc0MDY3OTUsImV4cCI6MTY0NzQxMDM5NSwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.UuCDCmwCRUJj6FlnkdVHFfCfjicImPQQ-KnuBzY7-pU';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc0MTY2NjYsImV4cCI6MTY0NzQyMDI2NiwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.L3lVAC4Sh5cc6WXHOz_2Wtgi591RD3Cm26N62x_dRRU';
   // get bucketlist data when component is mounted
   useEffect(() => {
     clearAllState();
