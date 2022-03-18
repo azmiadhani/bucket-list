@@ -42,9 +42,19 @@ userSchema.statics.login = async function (email, password) {
     if (auth) {
       return user;
     }
-    throw Error('Incorrect password');
+    throw {
+      name: 'CustomApiError',
+      statusCode: 400,
+      message: 'Invalid password',
+      errors: {},
+    };
   }
-  throw Error('Incorrect email');
+  throw {
+    name: 'CustomApiError',
+    statusCode: 400,
+    message: 'Invalid email',
+    errors: {},
+  };
 };
 
 module.exports = mongoose.model('users', userSchema);

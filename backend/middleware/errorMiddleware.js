@@ -42,6 +42,14 @@ const handleDuplicateKeyError = (err, res) => {
   return { statusCode, message, errors };
 };
 
+// @desc  Handling custom error
+const handleCustomApiError = (err, res) => {
+  let statusCode = err.statusCode ? err.statusCode : 500;
+  let message = err.message ? err.message : 'Internal Server Error';
+  let errors = err.errors ? err.errors : {};
+  return { statusCode, message, errors };
+};
+
 // @desc Error handling middleware
 const errorHandler = (err, req, res, next) => {
   let statusCode = res.statusCode ? res.statusCode : 500;
@@ -64,6 +72,8 @@ const errorHandler = (err, req, res, next) => {
       err.message === 'Unauthorized'
     )
       errorObject = handleUnauthorized(err, res);
+    if (err.name === 'CustomApiError')
+      errorObject = handleCustomApiError(err, res);
     if (Object.keys(errorObject).length === 0) {
       // filling error object
       // if there is no extra handler match then do default 500 error
