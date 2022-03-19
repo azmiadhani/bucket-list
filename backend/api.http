@@ -23,13 +23,12 @@ POST {{host}}/api/auth/login
 content-type: application/json
 
 {
-    "email": "azmiadhani3@gmail.com",
-    "password": "azmiadhani"
+
 }
 ###
 
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDczNDQwNDEsImV4cCI6MTY0NzM0NzY0MSwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.jbf7tNRLfKOsBvtlHcpsi6J39Xhj7GtJ0JroFrk3wTI
-@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDczNDQwNDEsImV4cCI6MTY3ODkwMTY0MSwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.Obrp5AYOOOidU1b6cNCe03saIi3oygqdzFLwgeZsAMs
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc0MTY2NjYsImV4cCI6MTY0NzQyMDI2NiwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.L3lVAC4Sh5cc6WXHOz_2Wtgi591RD3Cm26N62x_dRRU
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc0MTY2NjYsImV4cCI6MTY3ODk3NDI2NiwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.C4euZOYW02JhDnT_I8RWo3xsDXU2fk_zTdJCSvoHCM0
 
 # @desc         Refresh Token
 POST {{host}}/api/auth/refresh-token
