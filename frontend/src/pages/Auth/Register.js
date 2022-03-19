@@ -15,15 +15,18 @@ const Register = () => {
   const [errorObject, setErrorObject] = useState(null);
   // state for navigating
   const [navigate, setNavigate] = useState(false);
-
+  // reset error state
+  const resetError = () => {
+    setErrorMessage(null);
+    setErrorObject(null);
+  };
   // handling form submit
   const handleSubmit = async (e) => {
     // prevent submit reload event
     e.preventDefault();
-
-    var tempErrorObject = [];
-
+    resetError();
     // rePassword extra validation
+    var tempErrorObject = [];
     if (!rePassword) {
       tempErrorObject.rePassword = 'Please enter your re-typed password';
     }
@@ -31,7 +34,6 @@ const Register = () => {
       tempErrorObject.rePassword =
         'Password and Re-type Password are not the same';
     }
-
     // send request to the api
     const response = await axios
       .post(
@@ -58,14 +60,12 @@ const Register = () => {
             tempErrorObject[key] = value;
           });
         }
-        console.log(tempErrorObject);
         setErrorObject(tempErrorObject);
       })
       .then(function () {
         // always executed
       });
   };
-
   // if navigate is true, redirect to login page
   if (navigate) {
     return <Navigate to="/login" />;
@@ -85,8 +85,8 @@ const Register = () => {
             }
             id="floatingInput"
             placeholder="name@example.com"
-            onChange={(e) => setEmail(e.target.value)}
             required
+            onChange={(e) => setEmail(e.target.value)}
           />
           <label htmlFor="floatingInput">Email address</label>
           {/* Validation text */}
@@ -121,8 +121,8 @@ const Register = () => {
               'form-control' + (errorObject?.rePassword ? ' is-invalid' : '')
             }
             placeholder="Re-type Password"
-            onChange={(e) => setRePassword(e.target.value)}
             required
+            onChange={(e) => setRePassword(e.target.value)}
           />
           <label htmlFor="floatingRetypePassword">Re-type Password</label>
           <div className="invalid-feedback">

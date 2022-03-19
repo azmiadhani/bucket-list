@@ -11,13 +11,20 @@ const Login = () => {
   const [password, setPassword] = useState('');
   // state for error message
   const [errorMessage, setErrorMessage] = useState(null);
+  const [errorObject, setErrorObject] = useState(null);
   // state for navigating
   const [navigate, setNavigate] = useState(false);
-
+  // reset error state
+  const resetError = () => {
+    setErrorMessage(null);
+    setErrorObject(null);
+  };
+  // handling form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // reset error message
-    setErrorMessage(null);
+    resetError();
+    // rePassword extra validation
+    var tempErrorObject = [];
     // send request to the api
     axios
       .post(
@@ -34,18 +41,25 @@ const Login = () => {
         setAuth({ accessToken, refreshToken });
         setNavigate(true);
       })
-      .catch(function (error) {
+      .catch(function (err) {
         // handle error
-        if (error.response.data.error.message) {
-          setErrorMessage(error.response.data.error.message);
+        let resErrorMessage = err?.response?.data?.error?.message;
+        let resErrorObject = err?.response?.data?.error?.errors;
+        setErrorMessage(resErrorMessage ? resErrorMessage : 'Unexpected Error');
+        console.log(tempErrorObject);
+        if (resErrorObject) {
+          Object.entries(resErrorObject).forEach(([key, value]) => {
+            tempErrorObject[key] = value;
+          });
         }
+        setErrorObject(tempErrorObject);
       })
       .then(function () {
         // always executed
       });
   };
-
   // todo : handle navigate if login success
+  //! currently disabled for testing purpose
 
   return (
     <main className="form-signin">
@@ -55,24 +69,34 @@ const Login = () => {
         <div className="form-floating">
           <input
             type="email"
-            className="form-control"
+            className={
+              'form-control' + (errorObject?.email ? ' is-invalid' : '')
+            }
             id="floatingInput"
             placeholder="name@example.com"
             required
             onChange={(e) => setEmail(e.target.value)}
           />
           <label htmlFor="floatingInput">Email address</label>
+          <div className="invalid-feedback">
+            {errorObject?.email && errorObject?.email}
+          </div>
         </div>
         <div className="form-floating">
           <input
             type="password"
-            className="form-control"
+            className={
+              'form-control' + (errorObject?.password ? ' is-invalid' : '')
+            }
             id="floatingPassword"
             placeholder="Password"
             required
             onChange={(e) => setPassword(e.target.value)}
           />
           <label htmlFor="floatingPassword">Password</label>
+          <div className="invalid-feedback">
+            {errorObject?.password && errorObject?.password}
+          </div>
         </div>
 
         <button className="mt-4 w-100 btn btn-lg btn-primary" type="submit">
