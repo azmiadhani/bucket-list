@@ -1,11 +1,11 @@
 import './Auth.css';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import axios from '../../api/axios';
-import AuthContext from '../../context/AuthProvider';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
   // AuthProvider state so that we can access it in this component
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
   // state management for form input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
