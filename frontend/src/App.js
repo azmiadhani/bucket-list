@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 import Layout from './components/Layout/Layout';
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
@@ -14,7 +15,11 @@ function App() {
         <Route path="login" element={<Login />}></Route>
 
         {/* Protected routes */}
-        <Route path="/" element={<Home />}></Route>
+        {/* All of the routes inside RequireAuth Route protected by RequireAuth */}
+        <Route element={<RequireAuth />}>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/bucketlist" element={<Home />}></Route>
+        </Route>
 
         {/* catch all a.k.a 404 page */}
         <Route path="*" element={<div>404</div>}></Route>

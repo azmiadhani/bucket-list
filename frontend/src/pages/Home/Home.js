@@ -6,7 +6,7 @@ const Home = () => {
   const [bucketlist, setBucketlist] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const access_token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc0MTY2NjYsImV4cCI6MTY0NzQyMDI2NiwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.L3lVAC4Sh5cc6WXHOz_2Wtgi591RD3Cm26N62x_dRRU';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc1ODg4OTEsImV4cCI6MTY0NzU5MjQ5MSwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.7rp103BCDzSVB5n8_UWmAaCBJwC2iEzWGE_PmgZ5lvw';
   // get bucketlist data when component is mounted
   useEffect(() => {
     clearAllState();
@@ -19,12 +19,12 @@ const Home = () => {
     })
       .then((res) => {
         // handle success
-        setBucketlist(res.data);
+        setBucketlist(res?.data);
       })
       .catch((err) => {
         // handle error
-        console.log(err.response.data.error.message);
-        setErrorMessage(err.response.data.error.message);
+        let errorMessage = err?.response?.data?.error?.message;
+        setErrorMessage(errorMessage ? errorMessage : 'Unexpected Error');
       })
       .then(() => {
         // always executed
@@ -36,7 +36,7 @@ const Home = () => {
     setErrorMessage(null);
   };
   return (
-    <div className="chome">
+    <div className="ms-5">
       {bucketlist && (
         <Bucketlist
           datas={bucketlist}

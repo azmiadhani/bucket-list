@@ -2,18 +2,25 @@ import './Auth.css';
 import { useState } from 'react';
 import axios from '../../api/axios';
 import useAuth from '../../hooks/useAuth';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Login = () => {
   // AuthProvider state so that we can access it in this component
   const { setAuth } = useAuth();
+
+  // to navigate to another page
+  const navigate = useNavigate();
+  // to get the current location
+  const location = useLocation();
+  // get where user came from, if empty then redirect to home page
+  const from = location.state?.from?.pathname || '/';
+
   // state management for form input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // state for error message
   const [errorMessage, setErrorMessage] = useState(null);
   const [errorObject, setErrorObject] = useState(null);
-  // state for navigating
-  const [navigate, setNavigate] = useState(false);
   // reset error state
   const resetError = () => {
     setErrorMessage(null);
@@ -39,7 +46,8 @@ const Login = () => {
         const accessToken = response?.data?.accessToken;
         const refreshToken = response?.data?.refreshToken;
         setAuth({ accessToken, refreshToken });
-        setNavigate(true);
+        // navigate to
+        navigate(from, { replace: true });
       })
       .catch(function (err) {
         // handle error
@@ -58,8 +66,6 @@ const Login = () => {
         // always executed
       });
   };
-  // todo : handle navigate if login success
-  //! currently disabled for testing purpose
 
   return (
     <main className="form-signin">
