@@ -26,7 +26,7 @@ const Register = () => {
     e.preventDefault();
     resetError();
     // rePassword extra validation
-    var tempErrorObject = [];
+    var tempErrorObject = {};
     if (!rePassword) {
       tempErrorObject.rePassword = 'Please enter your re-typed password';
     }
@@ -34,6 +34,14 @@ const Register = () => {
       tempErrorObject.rePassword =
         'Password and Re-type Password are not the same';
     }
+
+    // if extra validation match then don't send request to the api
+    if (Object.keys(tempErrorObject).length > 0) {
+      console.log('err');
+      setErrorObject(tempErrorObject);
+      return;
+    }
+
     // send request to the api
     const response = await axios
       .post(
