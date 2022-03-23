@@ -1,12 +1,13 @@
 import './Auth.css';
 import { useState } from 'react';
 import axios from '../../api/axios';
-import useAuth from '../../hooks/useAuth';
+// import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import TokenService from '../../services/Token';
 
 const Login = () => {
   // AuthProvider state so that we can access it in this component
-  const { setAuth } = useAuth();
+  // const { setAuth } = useAuth();
 
   // to navigate to another page
   const navigate = useNavigate();
@@ -42,10 +43,12 @@ const Login = () => {
         }
       )
       .then(function (response) {
+        console.log(response);
+        console.log('then');
         // handle success
         const accessToken = response?.data?.accessToken;
         const refreshToken = response?.data?.refreshToken;
-        setAuth({ accessToken, refreshToken });
+        TokenService.storeToken(accessToken, refreshToken);
         // navigate to
         navigate(from, { replace: true });
       })
@@ -54,7 +57,6 @@ const Login = () => {
         let resErrorMessage = err?.response?.data?.error?.message;
         let resErrorObject = err?.response?.data?.error?.errors;
         setErrorMessage(resErrorMessage ? resErrorMessage : 'Unexpected Error');
-        console.log(tempErrorObject);
         if (resErrorObject) {
           Object.entries(resErrorObject).forEach(([key, value]) => {
             tempErrorObject[key] = value;
