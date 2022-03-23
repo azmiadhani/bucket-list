@@ -83,6 +83,11 @@ const errorHandler = (err, req, res, next) => {
         message: err.message,
         errors: {},
       };
+      // on development mode default error set default message
+      errorObject['message'] =
+        process.env.NODE_ENV === 'production'
+          ? 'Internal server error'
+          : err.message;
     }
     // stack & error for development purposes
     errorObject['stack'] =
