@@ -23,11 +23,12 @@ POST {{host}}/api/auth/login
 content-type: application/json
 
 {
-
+    "email": "azmiadhani@gmail.com",
+    "password": "azmiadhani"
 }
 ###
 
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc0MTY2NjYsImV4cCI6MTY0NzQyMDI2NiwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.L3lVAC4Sh5cc6WXHOz_2Wtgi591RD3Cm26N62x_dRRU
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDgwMTgzMDUsImV4cCI6MTY0ODAyMTkwNSwiYXVkIjoiNjIzOTczNWUxYWRlYzM0MDRiMzAwYWZiIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.Zm2XzdEeZMrcKo6f8i-hGqzqazjB_IRo5o2I1YOBywE
 @refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc0MTY2NjYsImV4cCI6MTY3ODk3NDI2NiwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.C4euZOYW02JhDnT_I8RWo3xsDXU2fk_zTdJCSvoHCM0
 
 # @desc         Refresh Token
