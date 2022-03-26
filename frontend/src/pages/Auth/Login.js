@@ -1,14 +1,13 @@
 import './Auth.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from '../../api/axios';
-// import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import TokenService from '../../services/Token';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
   // AuthProvider state so that we can access it in this component
-  // const { setAuth } = useAuth();
-
+  const { setAuth, persist, setPersist } = useAuth();
   // to navigate to another page
   const navigate = useNavigate();
   // to get the current location
@@ -17,8 +16,10 @@ const Login = () => {
   const from = location.state?.from?.pathname || '/';
 
   // state management for form input
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // !development - state value
+  const [email, setEmail] = useState('azmiadhani@gmail.com');
+  const [password, setPassword] = useState('azmiadhani');
+
   // state for error message
   const [errorMessage, setErrorMessage] = useState(null);
   const [errorObject, setErrorObject] = useState(null);
@@ -48,7 +49,8 @@ const Login = () => {
         // handle success
         const accessToken = response?.data?.accessToken;
         const refreshToken = response?.data?.refreshToken;
-        TokenService.storeToken(accessToken, refreshToken);
+        TokenService.storeRefreshToken(refreshToken);
+        setAuth({ accessToken });
         // navigate to
         navigate(from, { replace: true });
       })
@@ -69,6 +71,14 @@ const Login = () => {
       });
   };
 
+  const togglePersist = () => {
+    setPersist((prev) => !prev);
+  };
+
+  useEffect(() => {
+    localStorage.setItem('persist', persist);
+  }, [persist]);
+
   return (
     <main className="form-signin">
       <form onSubmit={handleSubmit}>
@@ -84,6 +94,8 @@ const Login = () => {
             placeholder="name@example.com"
             required
             onChange={(e) => setEmail(e.target.value)}
+            // !development
+            value={email}
           />
           <label htmlFor="floatingInput">Email address</label>
           <div className="invalid-feedback">
@@ -100,6 +112,8 @@ const Login = () => {
             placeholder="Password"
             required
             onChange={(e) => setPassword(e.target.value)}
+            // !development
+            value={password}
           />
           <label htmlFor="floatingPassword">Password</label>
           <div className="invalid-feedback">
@@ -110,6 +124,19 @@ const Login = () => {
         <button className="mt-4 w-100 btn btn-lg btn-primary" type="submit">
           Sign in
         </button>
+
+        <div className="form-check mt-2">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="persist"
+            onChange={togglePersist}
+            checked={persist}
+          />
+          <label className="form-check-label" htmlFor="persist">
+            Trust this device
+          </label>
+        </div>
         {errorMessage && (
           <p className="mt-2 error-message text-center">{errorMessage}</p>
         )}

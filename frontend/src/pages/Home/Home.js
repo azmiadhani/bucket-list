@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import Bucketlist from '../../components/Bucketlist/Bucketlist';
-import axios from '../../api/axios';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 
 const Home = () => {
   const [bucketlist, setBucketlist] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-
+  const axiosPrivate = useAxiosPrivate();
   // get bucketlist data when component is mounted
   useEffect(() => {
     clearAllState();
@@ -14,7 +14,7 @@ const Home = () => {
 
   // @desc  get bucketlist from api
   const getBucketlist = () => {
-    axios({
+    axiosPrivate({
       method: 'get',
       url: '/api/bucketlist',
     })

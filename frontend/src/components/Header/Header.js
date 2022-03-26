@@ -1,6 +1,20 @@
 import './Header.css';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import useLogout from '../../hooks/useLogout';
+
 const Header = () => {
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+
+  const logout = useLogout();
+
+  const signout = () => {
+    logout();
+    navigate('/login', { replace: true });
+  };
+
   return (
     <header className="p-3 d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <a
@@ -16,15 +30,29 @@ const Header = () => {
             Home
           </Link>
         </li>
+        <li>
+          {/* To use Link comoponent, "to" attribute is what route the link pointing to */}
+          <Link to="/home" className="nav-link px-2 link-secondary">
+            404
+          </Link>
+        </li>
       </ul>
 
-      <div className="col-md-3 text-end">
-        <Link to="/login" className="btn btn-outline-primary me-2">
-          Login
-        </Link>
-        <Link to="/register" className="btn btn-primary">
-          Register
-        </Link>
+      <div className="col-md-3 text-center">
+        {auth?.accessToken ? (
+          <button onClick={signout} className="btn btn-primary">
+            Logout
+          </button>
+        ) : (
+          <>
+            <Link to="/login" className="btn btn-outline-primary me-2">
+              Login
+            </Link>
+            <Link to="/register" className="btn btn-primary">
+              Register
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );

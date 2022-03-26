@@ -4,6 +4,7 @@ import Layout from './components/Layout/Layout';
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
 import Home from './pages/Home/Home';
+import PersistLogin from './components/PersistLogin/PersistLogin';
 
 function App() {
   return (
@@ -16,9 +17,11 @@ function App() {
 
         {/* Protected routes */}
         {/* All of the routes inside RequireAuth Route protected by RequireAuth */}
-        <Route element={<RequireAuth />}>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/bucketlist" element={<Home />}></Route>
+        <Route element={<PersistLogin />}>
+          <Route element={<RequireAuth />}>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/bucketlist" element={<Home />}></Route>
+          </Route>
         </Route>
 
         {/* catch all a.k.a 404 page */}
