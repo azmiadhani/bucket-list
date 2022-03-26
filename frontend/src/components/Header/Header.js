@@ -1,6 +1,12 @@
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import AuthContext from '../../context/AuthProvider';
+
 const Header = () => {
+  const [refreshToken, setRefreshToken] = useState(null);
+  const { auth } = useContext(AuthContext);
+  // todo : do token check here, if token exist, then hide login and register, show logout
   return (
     <header className="p-3 d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <a
@@ -18,13 +24,21 @@ const Header = () => {
         </li>
       </ul>
 
-      <div className="col-md-3 text-end">
-        <Link to="/login" className="btn btn-outline-primary me-2">
-          Login
-        </Link>
-        <Link to="/register" className="btn btn-primary">
-          Register
-        </Link>
+      <div className="col-md-3 text-center">
+        {refreshToken ? (
+          <Link to="/register" className="btn btn-primary">
+            Logout
+          </Link>
+        ) : (
+          <>
+            <Link to="/login" className="btn btn-outline-primary me-2">
+              Login
+            </Link>
+            <Link to="/register" className="btn btn-primary">
+              Register
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );

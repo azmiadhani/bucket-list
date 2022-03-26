@@ -1,5 +1,6 @@
 import axios from 'axios';
 import TokenService from '../services/Token';
+import useAuth from '../hooks/useAuth';
 
 // @desc  default config for axios
 const axiosInstance = axios.create({
