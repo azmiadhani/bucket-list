@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import AuthContext from '../../context/AuthProvider';
+import useAuth from '../../hooks/useAuth';
 import { useState, useEffect, useContext } from 'react';
 import TokenService from '../../services/Token';
 
 const Preload = () => {
   const [initialLoad, setInitialLoad] = useState(true);
-  const { auth, setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useAuth();
 
   // on Logout / setAuth({}) then execute
   useEffect(() => {
@@ -45,9 +45,11 @@ const Preload = () => {
   const assignToken = () => {};
 
   return (
-    <>
-      <Outlet />
-    </>
+    initialLoad == false && (
+      <>
+        <Outlet />
+      </>
+    )
   );
 };
 
