@@ -6,7 +6,7 @@ const { objectIdCheck } = require('../helpers/custommongooseHelper');
 // @access  Private
 module.exports.get = asyncHandler(async (req, res) => {
   // find all from db
-  const bucketlists = await Bucketlist.find();
+  const bucketlists = await Bucketlist.find({ user: req.payload.aud });
 
   res.status(200).json(bucketlists);
 });

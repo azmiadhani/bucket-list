@@ -28,7 +28,7 @@ content-type: application/json
 }
 ###
 
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDgwMTgzMDUsImV4cCI6MTY0ODAyMTkwNSwiYXVkIjoiNjIzOTczNWUxYWRlYzM0MDRiMzAwYWZiIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.Zm2XzdEeZMrcKo6f8i-hGqzqazjB_IRo5o2I1YOBywE
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDg0NTA2MDAsImV4cCI6MTY0ODQ1NDIwMCwiYXVkIjoiNjIzOTczNWUxYWRlYzM0MDRiMzAwYWZiIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9._7Frd5IODY_01V3zkeaHHx_RV4jig2Ok5Qx03Sa6n_Q
 @refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDc0MTY2NjYsImV4cCI6MTY3ODk3NDI2NiwiYXVkIjoiNjIzMDc5OTNmN2E3MmU5NTdiN2QzOTNlIiwiaXNzIjoiaHR0cHM6Ly9hem1pYWRoYW5pLmNvbSJ9.C4euZOYW02JhDnT_I8RWo3xsDXU2fk_zTdJCSvoHCM0
 
 # @desc         Refresh Token
@@ -53,7 +53,7 @@ Authorization: Bearer {{accessToken}}
 content-type: application/json
 
 {
-    "name": "Go to yeyeye",
+    "name": "Go to yayaya",
     "isDone": true
 }
 ###
