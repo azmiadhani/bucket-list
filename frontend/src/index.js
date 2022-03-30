@@ -5,6 +5,10 @@ import App from './App';
 import { AuthProvider } from './context/AuthProvider';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+// react-toastfy
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -14,6 +18,8 @@ ReactDOM.render(
           {/* routes handled inside the App Component */}
           <Route path="/*" element={<App />} />
         </Routes>
+        {/* container for react-toastify, only declare once, best at root */}
+        <ToastContainer position="top-right" hideProgressBar={false} />
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

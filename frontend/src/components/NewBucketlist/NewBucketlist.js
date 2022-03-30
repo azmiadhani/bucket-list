@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import { toast } from 'react-toastify';
 
 const NewBucketlist = ({ getBucketlist }) => {
   const defaultBucket = { name: '', isDone: false };
@@ -37,8 +38,7 @@ const NewBucketlist = ({ getBucketlist }) => {
     })
       .then(function (response) {
         // handle success
-        console.log('then => submit response');
-        console.log(response);
+        toast.success('Added Successfully 😜');
         try {
           getBucketlist();
         } catch (error) {
