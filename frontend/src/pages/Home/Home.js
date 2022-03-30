@@ -5,12 +5,19 @@ import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 const Home = () => {
   const [bucketlist, setBucketlist] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [initialLoad, setInitialLoad] = useState(true);
   const axiosPrivate = useAxiosPrivate();
   // get bucketlist data when component is mounted
   useEffect(() => {
     clearAllState();
     getBucketlist();
   }, []);
+
+  useEffect(() => {
+    if (initialLoad == false) {
+      console.log('bucketlist initial load done');
+    }
+  }, [bucketlist]);
 
   // @desc  get bucketlist from api
   const getBucketlist = () => {
@@ -44,6 +51,7 @@ const Home = () => {
           datas={bucketlist}
           title="Bucketlist"
           setDatas={setBucketlist}
+          setInitialLoad={setInitialLoad}
         />
       )}
       {errorMessage && <p>{errorMessage}</p>}

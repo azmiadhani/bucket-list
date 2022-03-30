@@ -1,4 +1,6 @@
-const Bucketlist = ({ datas, title, setDatas }) => {
+import NewBucketlist from '../NewBucketlist/NewBucketlist';
+
+const Bucketlist = ({ datas, title, setDatas, setInitialLoad }) => {
   const handleOnChange = (_id) => {
     // assigning the original bucketlist to a new variable
     const originalBucketlist = [...datas];
@@ -7,24 +9,36 @@ const Bucketlist = ({ datas, title, setDatas }) => {
     // if the item is not done, change it to done, else change it to not done
     originalBucketlist[index].isDone = !originalBucketlist[index].isDone;
     setDatas(originalBucketlist);
+    setInitialLoad(false);
   };
 
+  console.log(datas.length);
   return (
     <div className="blog-list">
       <h2>{title}</h2>
-      {datas.map((data) => (
-        // key is a must and unique, so react can keep track of item
-        <div className="blog-preview" key={data._id}>
-          <input
-            type="checkbox"
-            id={`custom-checkbox-${data._id}`}
-            name={data._id}
-            checked={data.isDone}
-            onChange={() => handleOnChange(data._id)}
-          />
-          {' ' + data.name}
+      <div className="mb-3">
+        <NewBucketlist />
+      </div>
+      <hr />
+      {datas.length > 0 ? (
+        <div className="list-group">
+          {datas.map((data) => (
+            // key is a must and unique, so react can keep track of item
+            <label className="list-group-item p-3" key={data._id}>
+              <input
+                className="form-check-input me-2"
+                type="checkbox"
+                name={data._id}
+                checked={data.isDone}
+                onChange={() => handleOnChange(data._id)}
+              />
+              {data.name}
+            </label>
+          ))}
         </div>
-      ))}
+      ) : (
+        <p>{title}</p>
+      )}
     </div>
   );
 };
