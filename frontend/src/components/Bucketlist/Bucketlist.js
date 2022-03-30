@@ -1,6 +1,12 @@
 import NewBucketlist from '../NewBucketlist/NewBucketlist';
 
-const Bucketlist = ({ datas, title, setDatas, setInitialLoad }) => {
+const Bucketlist = ({
+  datas,
+  title,
+  setDatas,
+  setInitialLoad,
+  getBucketlist,
+}) => {
   const handleOnChange = (_id) => {
     // assigning the original bucketlist to a new variable
     const originalBucketlist = [...datas];
@@ -16,8 +22,11 @@ const Bucketlist = ({ datas, title, setDatas, setInitialLoad }) => {
   return (
     <div className="blog-list">
       <h2>{title}</h2>
+      {/* <button type="button" onClick={() => getBucketlist()}>
+        Get Bucketlist
+      </button> */}
       <div className="mb-3">
-        <NewBucketlist />
+        <NewBucketlist getBucketlist={getBucketlist} />
       </div>
       <hr />
       {datas.length > 0 ? (

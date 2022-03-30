@@ -26,6 +26,7 @@ const Home = () => {
       url: '/api/bucketlist',
     })
       .then((res) => {
+        clearAllState();
         // handle success
         setBucketlist(res?.data);
       })
@@ -44,6 +45,7 @@ const Home = () => {
     setBucketlist(null);
     setErrorMessage(null);
   };
+
   return (
     <div className="ms-5">
       {bucketlist && (
@@ -52,6 +54,7 @@ const Home = () => {
           title="Bucketlist"
           setDatas={setBucketlist}
           setInitialLoad={setInitialLoad}
+          getBucketlist={getBucketlist}
         />
       )}
       {errorMessage && <p>{errorMessage}</p>}
